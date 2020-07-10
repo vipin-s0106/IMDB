@@ -16,6 +16,11 @@ from rest_framework.decorators import api_view,permission_classes
 #import Models
 from .models import Movie
 
+#importing the filter required packages
+from django_filters.rest_framework import DjangoFilterBackend
+from rest_framework.filters import OrderingFilter,SearchFilter
+
+
 
 class MovieCreateView(APIView):
     parser_classes = (MultiPartParser, JSONParser)
@@ -76,8 +81,17 @@ class MovieListView(generics.ListAPIView):
     queryset = Movie.objects.all().order_by('-time_stamp')
     serializer_class = MovieSerializer
     pagination_class = LimitOffsetPagination
-    
+    filter_backends = (DjangoFilterBackend,OrderingFilter,SearchFilter)
+    filter_fields = ('id','popularity','director','imdb_score','name','genre')
+    ordering_fields = ('id','name','imdb_score','popularity')
+    search_fields = ('name','director','genre')
 
+    '''
+    Example-
+    /api/movie/list/?search=Cha     -- search in name,director,genre
+    /api/movie/list/?name=Baywatch   -- filter based on fileds of filter
+    /api/movie/list/?orderning=name  --order the result based on name
+    '''
 
 @api_view(['GET'])
 @permission_classes([])
