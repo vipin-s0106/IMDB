@@ -53,7 +53,8 @@ class MovieCreateView(APIView):
             if(isinstance(data.get('genre'),list)):
                 data['genre'] = ",".join(data['genre'])
             else:
-                Response({"error":"Genre Not provided with required format array"},status=400)
+                # Response({"error":"Genre Not provided with required format array"},status=400)
+                pass
 
         serializer = MovieCreateUpdateSerializer(data=post_data,many=True)
 
@@ -94,7 +95,7 @@ class MovieListView(generics.ListAPIView):
     '''
 
 @api_view(['GET'])
-@permission_classes([])
+@permission_classes([IsAuthenticated,IsAdminUser])
 def getMovie(request,id):
     # All can see the single Movie Object
     movie = Movie.objects.filter(id=id).first()
@@ -136,7 +137,8 @@ class MovieView(APIView):
             if(isinstance(put_data.get('genre'),list)):
                 put_data['genre'] = ",".join(put_data['genre'])
             else:
-                Response({"error":"Genre Not provided with required format array"},status=400)
+                #Response({"error":"Genre Not provided with required format array"},status=400)
+                pass
 
         serilizer_context = {'request': request}
         serializer = MovieCreateUpdateSerializer(movie, data=put_data, partial=True, context=serilizer_context)

@@ -1,0 +1,55 @@
+<br>
+<br>
+<div style="margin-left:80px" class="tab-content bg-transparent">
+    <div id="note-full-container" class="note-has-grid row">
+        <div class="col-md-4 single-note-item all-category note-business" style="margin-top:60px;">
+            <div class="card card-body" style="background-color:#E6E9F1">
+                <span class="side-stick"></span>
+                <h5 class="note-title text-truncate w-75 mb-0" data-noteheading="Book a Ticket for Movie"><span class="glyphicon glyphicon-film"></span> {{movie.name}} </h5>
+                <p style="color:grey">{{movie.time_stamp| date:'dd MMM yyyy'}}</p>
+                <div class="note-content">
+                    <p ><span style="font-size:15px" class="glyphicon glyphicon-facetime-video"></span> {{movie.director}} (Director)</p>
+                    <p ><span style="font-size:15px" class="glyphicon glyphicon-link"></span> {{movie.genre}}</p>
+                    <p ><span style="font-size:15px" style="color:#375EC3" class="glyphicon glyphicon-star"></span> {{movie.imdb_score}} <span style="font-size:15px" style="color:tomato" class="glyphicon glyphicon-heart"></span> {{movie.popularity}}%</p>
+                </div>
+                <div class="d-flex align-items-center">
+                </div>
+            </div>
+        </div>
+        <div >
+          <section id="add-item">
+            <div class="container">
+                <div class="row d-flex align-items-center">
+                    <div class=" col-lg-6 py-5 py-lg-0 order-2 order-lg-1" data-aos="fade-right">
+                    <h1>Update Movie <span class="glyphicon glyphicon-film"></span></h1>
+                    <form #RegisterForm="ngForm">
+                        <div *ngIf="message" [style.color]="message_color" style="margin-left:10px;font-style: bold;">{{ message }}</div>
+                        <input [(ngModel)]="movie_data.name" type="text" name="name" placeholder="Enter Movie Name"  #name="ngModel"><br>
+                        
+                        <input [(ngModel)]="movie_data.director"  type="text" name="director" placeholder="Enter Director Name"  #director="ngModel"><br>
+                        
+                        <input [(ngModel)]="movie_data.genre" type="text" name="genre" placeholder="Enter Movie Genre like Drama, Action etc"  #genre="ngModel"><br>
+                        
+                        <input [(ngModel)]="movie_data.imdb_score" type="number" name="imdb_score" placeholder="Enter IMDB score" min="0.0" max="10.0" #imdb_score="ngModel">
+                        
+                        <div *ngIf="imdb_score.touched && imdb_score.value > 10.0">
+                            <small style="color:Tomato;margin-left:10px;">imdb score can't more than 10.0</small>
+                        </div>
+                        <input [(ngModel)]="movie_data.popularity" type="number" name="popularity" placeholder="Enter Popularity rating" min="0.0" max="100.0" #popularity="ngModel">
+                        
+                        <div *ngIf="popularity.touched && popularity.value > 100.0">
+                            <small style="color:Tomato;margin-left:10px;">popularity rating can't more than 100.0</small>
+                        </div>
+                        <br>
+                        
+                        <a  (click)="updateMovie(movie.id)" class="btn-get-started scrollto" style="margin-top:10px">Update</a>
+                    </form>
+                    </div>
+                </div>
+            </div> 
+          </section>
+        </div>
+    </div> 
+</div>
+   
+        

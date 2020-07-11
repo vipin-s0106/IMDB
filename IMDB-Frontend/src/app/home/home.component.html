@@ -1,0 +1,28 @@
+<link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css" rel="stylesheet">
+<br>
+<br>
+<div style="margin-left:30px" class="tab-content bg-transparent">
+        <div 
+        infiniteScroll
+        [infiniteScrollDistance]="2"
+        [infiniteScrollThrottle]="50"
+        (scrolled)="onScroll(next_movie_list_url)" id="note-full-container" class="note-has-grid row">
+            <div *ngFor="let movie of movies" class="col-md-4 single-note-item all-category note-business">
+                <div class="card card-body" style="background-color:#E6E9F1">
+                    <span class="side-stick" ></span>
+                    <h5 *ngIf="is_admin; else NoAdmin" class="note-title text-truncate w-75 mb-0" data-noteheading="Book a Ticket for Movie"><span class="glyphicon glyphicon-film"></span><a class="movie_link" href="/movie/{{movie.id}}"> {{movie.name}} </a><a class="button" style="margin-left:20px;font-size:15px;color:#375EC3"><i (click)="delete_movie(movie.id)" class="delete-movie fa fa-trash remove-note"></i></a></h5>
+                    <ng-template #NoAdmin>
+                        <h5 class="note-title text-truncate w-75 mb-0" data-noteheading="Book a Ticket for Movie"><span class="glyphicon glyphicon-film"></span> {{movie.name}} </h5>
+                    </ng-template>
+                    <p style="color:grey">{{movie.time_stamp| date:'dd MMM yyyy'}}</p>
+                    <div class="note-content">
+                        <p ><span style="font-size:15px" class="glyphicon glyphicon-facetime-video"></span> {{movie.director}} (Director)</p>
+                        <p ><span style="font-size:15px" class="glyphicon glyphicon-link"></span> {{movie.genre}}</p>
+                        <p ><span style="font-size:15px" style="color:#375EC3" class="glyphicon glyphicon-star"></span> {{movie.imdb_score}} <span style="font-size:15px" style="color:tomato" class="glyphicon glyphicon-heart"></span> {{movie.popularity}}%</p>
+                    </div>
+                    <div class="d-flex align-items-center">
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>

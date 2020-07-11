@@ -1,0 +1,45 @@
+
+<section id="add-item">
+<div class="container">
+  <div class="row d-flex align-items-center">
+    <div class=" col-lg-6 py-5 py-lg-0 order-2 order-lg-1" data-aos="fade-right">
+      <h1>Add Movie to List <span class="glyphicon glyphicon-film"></span></h1>
+      <form #RegisterForm="ngForm">
+        <div *ngIf="message" [style.color]="message_color" style="margin-left:10px;font-style: bold;">{{ message }}</div>
+        <input [(ngModel)]="movie_data.name"  type="text" name="name" placeholder="Enter Movie Name" required #name="ngModel"><br>
+        <div *ngIf="name.errors?.required && name.touched">
+          <small style="color:Tomato;margin-left:10px;">movie name is required.</small>
+        </div>
+        <input [(ngModel)]="movie_data.director"  type="text" name="director" placeholder="Enter Director Name" required #director="ngModel"><br>
+        <div *ngIf="director.errors?.required && director.touched">
+          <small style="color:Tomato;margin-left:10px;">director name is required.</small>
+        </div>
+        <input [(ngModel)]="movie_data.genre" type="text" name="genre" placeholder="Enter Movie Genre like Drama, Action etc" required #genre="ngModel"><br>
+        <div *ngIf="genre.errors?.required && genre.touched">
+          <small style="color:Tomato;margin-left:10px;">genre is required.</small>
+        </div>
+        <input [(ngModel)]="movie_data.imdb_score" type="number" name="imdb_score" placeholder="Enter IMDB score" min="0.0" max="10.0" required #imdb_score="ngModel">
+        <div *ngIf="imdb_score.errors?.required && imdb_score.touched">
+          <small style="color:Tomato;margin-left:10px;">imdb score is required.</small>
+        </div>
+        <div *ngIf="imdb_score.touched && imdb_score.value > 10.0">
+          <small style="color:Tomato;margin-left:10px;">imdb score can't more than 10.0</small>
+        </div>
+        <input [(ngModel)]="movie_data.popularity" type="number" name="popularity" placeholder="Enter Popularity rating" min="0.0" max="100.0" required #popularity="ngModel">
+        <div *ngIf="popularity.errors?.required && popularity.touched">
+          <small style="color:Tomato;margin-left:10px;">popularity rating is required.</small>
+        </div>
+        <div *ngIf="popularity.touched && popularity.value > 100.0">
+          <small style="color:Tomato;margin-left:10px;">popularity rating can't more than 100.0</small>
+        </div>
+        <br>
+        
+        <a  (click)="addMovie()" class="btn-get-started scrollto" style="margin-top:10px">ADD</a>
+      </form>
+    </div>
+    <div class="col-lg-6 order-1 order-lg-2" data-aos="fade-left">
+      <img src="assets/img/add.png" alt="">
+    </div>
+   </div>
+</div> 
+</section>
