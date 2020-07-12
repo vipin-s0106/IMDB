@@ -8,7 +8,7 @@ This application is a cloned **IMDBMovie** Simple Web app. Following are the som
 - Admin User can create the movie instance, update and Delete existing movie
 - Normal User/AnyonomousUser won't allow for do the any create update and delete
 - User/Admin can logout from application
-- Retriving movies based on user interest if user scroll down then frontend server will call backend server api to get nextset of result.
+- Retrieving  movies based on user interest if user scroll down then frontend server will call backend server api to get nextset of result.
 
 
 ### Tech Stack
@@ -24,6 +24,7 @@ This application is a cloned **IMDBMovie** Simple Web app. Following are the som
     - DjangoRestFramework
     - Full Fledged REST API
     - Python
+    - Heroku Postgred DB
  
  3. Deployment
     - Heroku - Frontend Angular (different server)
@@ -37,8 +38,8 @@ This application is a cloned **IMDBMovie** Simple Web app. Following are the som
 - Angular CLI
 - node
 
-### Installing Libreries, Setup and Run the servers
-- Open backend folder and run the below command to install required libreries for Python django and setup the virtual env
+### Installing Libraries, Setup and Run the servers
+- Open backend folder and run the below command to install required libraries for Python django and setup the virtual env
 and start backend server
    - > cd IMDB_DJANGO_BACKEND 
    - > py -m pip install --user virtualenv 
@@ -63,17 +64,17 @@ Heroku url -
 UI experience
 - > https://imdbmovie.herokuapp.com/  
 
-Accesssing direct backend API
+Accessing direct backend API
 - > https://imdbdjangobackend.herokuapp.com/api/movie/list/
 
 
-#### In below snipptes, explained all the docs regarding calling of API
+#### In below snippets, explained all the docs regarding calling of API
 
 
 
-# Snipptes
+# Snippets
 
-### FrontEnd-Backend Integrated Snniptes
+### FrontEnd-Backend Integrated Snippets
 - Login
 ![Screenshot](Snippets/Login.PNG)
 - SignUp
@@ -102,7 +103,7 @@ Accesssing direct backend API
 ![Screenshot](Snippets/AfterDelete.PNG)
 
 
-### Backend API POSTMAN Snniptes
+### Backend API POSTMAN Snippets (use Postman Tool for API testing)
 1-  Register API (POST)
 - > https://imdbdjangobackend.herokuapp.com/api/register/
 ```json
@@ -115,7 +116,7 @@ Accesssing direct backend API
 ```
 ![Screenshot](Snippets/api_register.PNG)
 
-2- Api Login with created user test2 retrun JWT token(access and refresh)
+2- Api Login with created user test2 return JWT token(access and refresh)
 - > https://imdbdjangobackend.herokuapp.com/api/login/
 ```json
 #Json Post data
@@ -136,7 +137,7 @@ Accesssing direct backend API
 ```
 ![Screenshot](Snippets/api_token_refresh.PNG)
 
-4- Setting the access toekn in Header to do the Admin request with server like (Create, Update, Delete Movie). Make sure that Logged with Admin user, if Not logged with Admin User then you will get the error like "You do not have permission to perform this action"
+4- Setting the access token in Header to do the Admin request with server like (Create, Update, Delete Movie). Make sure that Logged with Admin user, if Not logged with Admin User then you will get the error like "You do not have permission to perform this action"
 ```json
 #Setting Header as shown in the image
 
@@ -226,17 +227,17 @@ You can create Multiple Movie as well with pass data like below
 
 ![Screenshot](Snippets/api_admin_movie_creation.PNG)
 
-10- Get the Movies list (can be Accessible by anyone LoggedUser/AdminUser/AnanoyomousUser)
+10- Get the Movies list (can be Accessible by anyone LoggedUser/AdminUser/Anonymous  User)
 - > https://imdbdjangobackend.herokuapp.com/api/movie/list/
 
 As we can see in the response this the paginated one server is not delivering the whole list it sent the first 15 records if user want more list then request using the **next url**
 - > https://imdbdjangobackend.herokuapp.com/api/movie/list/?limit=15&offset=15
 
-we can change here limit value at frontend server acording to requirement. I used here Angular for frontend. so when user scroll down then this next url automatically calls the next 15 sets of the result and so on.
+we can change here limit value at frontend server according to requirement. I used here Angular for frontend. so when user scroll down then this next url automatically calls the next 15 sets of the result and so on.
 
 ![Screenshot](Snippets/api_admin_movie_list.PNG)
 
-11- Ananyomous User Accessing the list ( Just Unchecked the Authorization checkbox so token won't pass with request)
+11- Anonymous User accessing the list (Just Unchecked the Authorization checkbox so token won't pass with request)
 - > https://imdbdjangobackend.herokuapp.com/api/movie/list/
 
 ![Screenshot](Snippets/api_ananyomous_movie_list.PNG)
@@ -286,7 +287,7 @@ Store the access token in header as we did earlier
 
 ![Screenshot](Snippets/api_normal_user_login.PNG)
 
-17- Normal Logged user trying to create the Movie (Recieved Error) Only Admin access given
+17- Normal Logged user trying to create the Movie (Received Error) Only Admin access given
 - > https://imdbdjangobackend.herokuapp.com/api/movie/create/
 ```json
 #Post Json data
@@ -310,12 +311,12 @@ try to edit something in aceess token in header section
 
 ![Screenshot](Snippets/api_incorrect_token.PNG)
 
-19- Normal User can also retrive the movie list
+19- Normal User can also retrieve the movie list
 - > https://imdbdjangobackend.herokuapp.com//api/movie/list/
 
 ![Screenshot](Snippets/api_normal_user_getmovie.PNG)
 
-20- Normal LoggedUser/Anyonoumous User do not ahve permission for Update
+20- Normal Logged User/ Anyonoumous User do not ahve permission for Update
 - > https://imdbdjangobackend.herokuapp.com/api/movies/236/
 ```json
 #Put Json data
@@ -330,7 +331,7 @@ try to edit something in aceess token in header section
 
 ![Screenshot](Snippets/api_normal_user_update_notallowed.PNG)
 
-21- Normal LoggedUser/Anyonoumous User do not ahve permission for Update
+21- Normal LoggedUser/Anyonoumous User do not have permission for Update
 Request type - DELETE
 - > https://imdbdjangobackend.herokuapp.com/api/movies/236/
 
