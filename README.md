@@ -192,6 +192,37 @@ Accesssing direct backend API
    "name": "The Wizard of Oz"
 }
 ```
+You can create Multiple Movie as well with pass data like below
+```json
+#Post Json data
+[
+   {
+      "popularity": 83.0,
+      "director": "Victor Fleming",
+      "genre": [
+      "Adventure",
+      " Family",
+      " Fantasy",
+      " Musical"
+      ],
+      "imdb_score": 8.3,
+      "name": "The Wizard of Oz"
+   },
+   {
+      "popularity": 83.0,
+      "director": "Victor Fleming",
+      "genre": [
+      "Adventure",
+      " Family",
+      " Fantasy",
+      " Musical"
+      ],
+      "imdb_score": 8.3,
+      "name": "The Wizard of Oz"
+   },
+
+]
+```
 
 ![Screenshot](Snippets/api_admin_movie_creation.PNG)
 
