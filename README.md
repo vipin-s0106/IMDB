@@ -11,7 +11,7 @@ This application is a cloned **IMDBMovie** Simple Web app. Following are the som
 - Retrieving  movies based on user interest if user scroll down then frontend server will call backend server api to get nextset of result.
 
 
-### Tech Stack
+### Tech Stack Used
 1. Frontend Framework
     - Angular
     - HTTP Interceptor
