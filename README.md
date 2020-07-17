@@ -72,7 +72,7 @@ Accessing direct backend API
 
 
 
-# Snippets
+## Snippets
 
 ### FrontEnd-Backend Integrated Snippets
 - Login
